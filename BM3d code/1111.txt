@@ -1,0 +1,16 @@
+I_1 = gmean(I,3,3);J_1 = gmean(J,3,3);G_1 = gmean(G,3,3);%3*3几何均值滤波
+figure()
+subplot(3,2,1)
+imshow(I_1);title('原图几何滤波');
+subplot(3,2,3)
+imshow(J_1);title('椒盐几何滤波');
+subplot(3,2,5)
+imshow(G_1);title('高斯几何滤波');
+I_2 = RAMF(I);J_2 = RAMF(J);G_2 = RAMF(G);%自适应中值滤波
+subplot(3,2,2)
+imshow(I_2);title('原图自适应中值滤波');
+subplot(3,2,4)
+imshow(J_2);title('椒盐自适应中值滤波');
+subplot(3,2,6)
+imshow(G_2);title('高斯自适应中值滤波');
+ 
