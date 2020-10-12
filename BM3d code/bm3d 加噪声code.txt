@@ -1,0 +1,31 @@
+
+% Deblurring BM3D denoising demo file, based on Y. M??kinen, L. Azzari, A. Foi, 2019.
+% Exact Transform-Domain Noise Variance for Collaborative Filtering of Stationary Correlated Noise.
+% In IEEE International Conference on Image Processing (ICIP), pp. 185-189
+
+% ---
+% The location of the BM3D files -- this folder only contains demo data
+addpath('bm3d');
+
+% Experiment specifications   
+imagename = 'cameraman256.png';
+
+% Load noise-free image
+y = im2double(imread(imagename));
+
+% Generate blurry + noisy image
+experiment_number = 1;
+
+if experiment_number==1
+    sigma=sqrt(2)/255;
+    for x1=-7:7; for x2=-7:7; v(x1+8,x2+8)=1/(x1^2+x2^2+1); end, end; v=v./sum(v(:));
+end
+if experiment_number==2
+    sigma=sqrt(8)/255;
+    s1=0; for a1=-7:7; s1=s1+1; s2=0; for a2=-7:7; s2=s2+1; v(s1,s2)=1/(a1^2+a2^2+1); end, end;  v=v./sum(v(:));
+end
+if experiment_number==3
+    BSNR=40; sigma=-1; % if "sigma=-1", then the value of sigma depends on the BSNR
+    v=ones(9); v=v./sum(v(:));
+end
+if experiment_numb
